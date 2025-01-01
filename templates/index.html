@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Desafio</title>
+	<style type="text/css">
+		html,body{
+			width: 100%;
+			height: 100%;
+			margin: 0%;
+			box-sizing: border-box;
+			overflow-x: hidden;
+		}
+		body{
+			padding: 2%;
+			font-family: 'Aleppo', sans-serif;
+			overflow: auto;
+		}
+		button{
+			cursor: pointer;
+		}
+
+		#content{
+			width: 100%;
+			height: 100%;
+			box-sizing: border-box;
+			padding: 1%;
+			display:flex;
+		}
+
+		#part-1{
+			width: 80%;
+			height: 100%;
+			box-sizing: border-box;
+			overflow: auto;
+			min-height: 565px;
+			
+		}
+		#options{
+			width: 20%;
+			height: 100%;
+			box-sizing: border-box;
+			padding: 1%;
+			min-height: 565px;
+			min-width: 213px;
+		}
+
+		#title{
+			width: 100%;
+			height: 10%;
+			box-sizing: border-box;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			display: flex;
+		}
+		#table-numbers{
+			width: 100%;
+			height: 90%;
+			box-sizing: border-box;
+			padding: 1%;
+			font-family: "Apple Juice";
+
+		}
+
+		#title h1{
+			font-size: 300%;
+			color: #ff5757;
+			margin:0% ;
+
+		}
+		#numbers{
+
+			width: 100%;
+			height: auto;
+			table-layout: fixed;
+			border-collapse: collapse;
+
+
+
+		}
+
+		#numbers th{
+			border: none;
+			border-bottom: 2px solid;
+			border-color: #ff5757;
+			font-size: 120%;
+			color: #ff5757;
+
+
+
+		}
+
+		td{
+			padding-top: 0.8%;
+			height: 40px;
+			border: 1px solid;
+			border-color: #dddedf;
+		}
+
+		#numbers button{
+			font-family: "Apple Juice";
+			height: 100%;
+			width: 100%;
+			font-weight: bolder;
+			font-size: 100%;
+			border: none;
+			background: transparent;
+			box-sizing: border-box;
+		}
+
+		#buttons, #dashboard{
+			width: 100%;
+			height: 50%;
+			box-sizing: border-box;
+
+		}
+
+
+		.btn{
+
+			height: 30%;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		#buttons button{
+			font-size: 120%;
+			border-radius: 10px;
+			color: #2e2c2b;
+			height: 60%;
+			width: 60%;
+
+
+
+
+
+		}
+		#sort, #alter{
+			min-height: 31px;
+			max-height: 60px;
+			min-width: 163px;
+			max-width: 200px;
+		}
+		#sort{
+
+			background: #d7daff;
+			border-color: #a2a8f1;
+
+		}
+
+		#alter{
+			background: #ffccd2;
+			border-color: #f89faa;
+		}
+
+		#dash-goal{
+			width: 100%;
+			height: 50%;
+			font-family: 'Apple Juice';
+			color: #1b9396;
+			box-sizing: border-box; 
+			font-size: 150%;
+		}
+		h4, h3{
+			margin: 0;
+		}
+		#dash-goal h1{
+			margin: 0;
+		}
+		#progress{
+			text-align: center;
+			width: 100%;
+			height: 50%;
+			box-sizing: border-box;
+			padding: 3%;
+			font-size: 130%;
+
+		}
+
+		#real, #deposits, #last-sorteds, #cal-progress{
+			width: 100%;
+			height: 50%;
+			box-sizing: border-box;
+			text-align: center;
+
+		}
+
+		#real, #deposits{
+			font-size: 120%;
+
+		}
+
+
+		#bar{
+			height: 30%;
+			width: 100%;
+			background: #cbcccd;
+			box-sizing: border-box;
+			border: 2px solid black;
+			margin-top: 2%;
+
+		}
+
+		#bar-progress{
+			height: 100%;
+			background: green;
+			width: 50%;
+			box-sizing: border-box;
+			text-align: center;
+			color: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		#box{
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			display: none; /*block*/
+			justify-content: center;
+			align-items: center;
+			background: rgba(203, 204, 205, 0.5);
+			z-index: 1000;
+			overflow: auto;
+			font-size: 150%;
+			
+
+
+
+
+		}
+
+		#sort-numbers, #alter-goal{
+			box-sizing: border-box;
+			height: 70vh;
+			width: 30vw;
+			border: 2px solid;
+			background: white;
+			overflow: auto;
+			min-width: 265px;
+			flex: 0 0 auto;
+			position: relative;
+			margin: auto;
+			margin-top: 5%;
+			min-height: 440px;
+			font-size: 80%;
+
+			
+
+
+
+
+			
+		}
+
+		.header{
+			width: 100%;
+			height: 10%;
+			box-sizing: border-box;
+			border: none;
+			border-bottom: 2px solid black;
+			display: flex;
+			justify-content: right;
+			padding: 2%;
+
+		}
+		.box-content{
+			width: 100%;
+			height: 70%;
+			box-sizing: border-box;
+			padding: 2%;
+
+
+		}
+		.box-button{
+			width: 100%;
+			height: 20%;
+			box-sizing: border-box;
+			display: flex;
+
+		}
+
+		.btn-close{
+
+			border: none;
+			background: transparent;
+			height: 30px;
+			width: 30px;
+			background-image: url('../static/images/close_icon.png');
+			background-size: 100% 100%;
+			background-position: center; 
+			background-repeat: no-repeat;
+		}
+
+		.question{
+			width: 100%;
+			height: 40%;
+			box-sizing: border-box;
+			display: flex;
+			text-align: center;
+			align-items: center;
+			justify-content: center;
+			font-size: 130%;
+
+
+		}
+
+		.data{
+			width: 100%;
+			height: 35%;
+			box-sizing: border-box;
+			
+
+		}
+
+		.message{
+			width: 100%;
+			height: 25%;		
+			box-sizing: border-box;
+			padding: 2%;
+			text-align: center;
+			font-size: 130%;
+			overflow: auto;
+
+		}
+
+
+		select, input{
+			
+			height: 70%;
+			width: 100%;
+			border: 4px solid gray;
+			border-radius: 10px;
+			box-sizing: border-box;
+			max-height: 70px;
+			font-size: 100%;
+
+
+		}
+
+		select{
+			margin-bottom: 2%;
+		}
+
+		.btn-double{
+			width: 50%;
+			height: 100%;		
+			box-sizing: border-box;
+			padding: 2%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.btn-confirm, .btn-mark{
+			height: 50%;
+			width: 100%;
+			border-radius: 10px;
+			border-color: #ff5757;
+			color: #ff5757;
+			background: white;
+			font-size: 100%;
+			font-weight: bolder;
+		}
+		#sort-numbers{
+			display: none;
+		}
+
+		button[disabled] {
+			background-color: #e0e0e0;  
+			color: #6c757d;             
+			border: 1px solid #ced4da;  
+			cursor: not-allowed;       
+			opacity: 0.65;             
+		}
+		.deposited{
+			background: #ff5757;
+
+		}
+		@font-face {
+
+			font-family: 'Aleppo';
+			src: url('../static/fonts/Aleppo-Regular.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+
+		}
+		@font-face {
+
+			font-family: 'Apple Juice';
+			src: url('../static/fonts/Apple Juice.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+
+		}
+
+/* Celular */
+@media (max-width: 767px) {
+	
+	#content{
+		flex-direction: column;
+	}
+	#part-1{
+		width: 100%;
+		height: 70%;
+		min-height: 445px;
+		min-width: 324px;
+		
+		
+
+	}
+	#options{
+		width: 100%;
+		height: 30%;
+		display: flex;
+		min-height: 190px;
+		min-width: 324px;
+
+		
+
+
+	}
+
+	#title h1{
+		font-size: 150%;
+	}
+
+	#buttons, #dashboard{
+		width: 50%;
+		height: 100%;
+
+
+	}
+	#buttons{
+		font-size: 80%;
+	}
+
+	#sort, #alter{
+		min-height: 20px;
+		max-height: 30px;
+		min-width: 150px;
+		max-width: 160px;
+
+
+	}
+
+	#dash-goal{
+		font-size: 70%;
+	}
+
+	#progress{
+		font-size: 50%;
+	}
+	#sort-numbers, #alter-goal{
+
+		height: 60vh;
+		width: 70vw;
+		min-width: 260px;
+		min-height: 360px;
+		font-size: 60%;
+
+	}
+
+	.btn-close{
+		height: 20px;
+		width: 20px;
+	}
+
+	.question{
+		
+		font-size: 100%;
+
+
+	}
+
+	.message{
+		font-size: 100%;
+	}
+
+	select, input{
+		max-height: 40px;
+		font-size: 80%;
+
+	}
+
+	.btn-confirm, .btn-mark{
+		font-size: 80%;
+	}
+	.box{
+		min-width: 375px;
+		overflow: auto;
+	}
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+	#part-1{
+		width: 70%;
+		height: 100%;
+		min-height: 610px;
+
+	}
+	#options{
+		width: 30%;
+		height: 100%;
+		min-height: 610px;
+
+
+	}
+
+	#progress{
+		font-size: 80%;
+	}
+
+	#sort-numbers, #alter-goal{
+
+		height: 70vh;
+		width: 40vw;
+
+	}
+
+	.btn-confirm, .btn-mark{
+		font-size: 70%;
+	}
+	.question {
+		font-size: 100%;
+	}
+
+
+}
+
+@media (min-width: 1025px) and (max-width: 1670px){
+
+	#sort, #alter{
+		min-height: 31px;
+		max-height: 50px;
+		min-width: 163px;
+		max-width: 200px;
+	}
+
+	#dash-goal{
+		font-size: 100%;
+	}
+
+	#progress{
+		font-size: 80%;
+	}
+	.btn-confirm, .btn-mark{
+		font-size: 70%;
+	}
+	.question {
+		font-size: 100%;
+	}
+
+
+
+
+
+}
+
+</style>
+</head>
+<body>
+
+	<div id="content">
+		<div id="part-1">
+			
+			<div id="title">
+				<h1>DESAFIO</h1>
+			</div>
+			<div id="table-numbers">
+				<table id="numbers">
+					<tbody>
+						<tr>
+							<th colspan="10">
+								Restantes: -
+							</th>
+						</tr>
+
+
+					</tbody>
+				</table>
+
+
+			</div>
+		</div>
+		<div id="options">
+			<div id="buttons">
+				<div class="btn"><button id="sort" onclick="openSort()">Sortear números</button></div>
+				<div class="btn"><button id="alter" onclick="openAlter()">Alterar meta</button></div>
+				
+			</div>
+			<div id="dashboard">
+				<div id="dash-goal">
+					<div id="real"> <h4>meta:</h4><h1>R$ 20.000,00</h1> </div>
+					<div id="deposits"><h4>depósitos totais:</h4><h1>200</h1></div>
+
+				</div>
+				<div id="progress">
+					<div id="last-sorteds">
+						<h3>Últimos sorteados</h3>
+						<h3>1 - 2 - 3 - 4 - 5</h3>
+					</div>
+					<div id="cal-progress">
+						<h3>Loading...</h3>
+
+						<div id="bar">
+							<div id="bar-progress">-</div>
+						</div>
+
+					</div>
+
+				</div>
+				
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="box">
+		<div id="sort-numbers">
+			<div class="header"><button class="btn-close" onclick="closePopUp()"></button></div>
+			<div class="box-content">
+				<div class="question"><h3>Informe o quantitativo máximo para depósito:</h3></div>
+				<div class="data"><input type="number" name="value-real" id="value-real"></div>
+				<div class="message"></div>
+
+			</div>
+			<div class="box-button">
+				<div class="btn-double"><button class="btn-confirm" onclick="sortNumbers()">Sortear</button> </div>
+				<div class="btn-double"><button class="btn-mark" id="btn-mark" onclick="markTable()">Marcar na tabela</button></div>
+
+
+			</div>
+		</div>
+		<div id="alter-goal">
+			<div class="header"><button class="btn-close" onclick="closePopUp()"></button></div>
+			<div class="box-content">
+				<div class="question"><h3>Informe a nova meta em depósitos ou valor:</h3></div>
+				<div class="data"><select name="type" id="type-select">
+					<option value="deposit">Depósitos</option>
+					<option value="value">Valor</option>
+				</select>
+				<input type="number" name="new-goal" id="new-goal">
+			</div>
+			<div class="message"></div>
+
+		</div>
+		<div class="box-button">
+			<div class="btn-double"><button class="btn-confirm" onclick="atualizeGoal(0)">Somente alterar</button> </div>
+			<div class="btn-double"><button class="btn-mark" id="btn-alter-progress" onclick="atualizeGoal(1)">Alterar e manter progresso</button></div>
+
+
+		</div>
+	</div>
+</div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
